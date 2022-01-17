@@ -19,12 +19,15 @@ li a{
 
 .flexNav {
     display: grid;
-    grid-template-columns: 1fr 7fr;
+    grid-template-columns: 1fr 7fr 1fr;
+    background-color: white;
 }
 
 .brandContainer{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    text-decoration: none;
+    color: black;
 }
 
