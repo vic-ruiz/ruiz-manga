@@ -7,7 +7,6 @@ export const ItemListContainer = () => {
     <>
       <PageList greeting="Landing Page Proyecto React" />
       <PageList greeting="SneakerShop" />
-      <ItemCount stock={20} initial={0} />
     </>
   );
 };

@@ -19,7 +19,7 @@ export function ItemCount({stock , initial}) {
 
 
     return (
-        <div class="itemCounter" >
+        <div className="itemCounter" >
             <h1> {`${counter}`} </h1>
             <ButtonGroup>
                 <Button onClick = {restar}>
