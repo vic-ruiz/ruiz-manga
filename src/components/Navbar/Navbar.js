@@ -2,20 +2,26 @@ import React from 'react'
 import './Navbar.css';
 import brand from './brand.svg'
 import { CartWidget} from './CartWidget/CartWidget'
+import {Link} from "react-router-dom"
 
-export const MiNav = ()=> {
+export const Navbar = ()=> {
     return (
         <nav className='flexNav'>
-            <a href="default.asp" className= 'brandContainer'>
+            <Link to='/' className= 'brandContainer'>
                 <img src= {brand} className='brandLogo'/>
                 <p>SneakersShop</p>
-            </a>
+            </Link>
         
             <ul className='box'>
-                <li><a href="default.asp">Home</a></li>
-                <li><a href="products.asp">Products</a></li>
-                <li><a href="contact.asp">Contact</a></li>
-                <li><a href="about.asp">About</a></li>
+                <li>
+                    <Link to='/'>Home</Link>
+                </li>
+                <li>
+                    <Link to='/category/1'>Yeezy</Link>
+                </li>
+                <li>
+                    <Link to='/category/2'>Jordan</Link>
+                </li>
             </ul>
 
             <CartWidget/>

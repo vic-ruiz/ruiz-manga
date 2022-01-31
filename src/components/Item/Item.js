@@ -1,13 +1,16 @@
 import React from 'react'
 import { ItemCount } from "../ItemCount/ItemCount";
 import "./Item.css"
+import { useNavigate } from "react-router-dom"
 
 export const Item = ({product}) => {
+
+    const navigate = useNavigate();
+    
     return(
-        <div className="productosList" >
+        <div className="productosList" onClick={()=> navigate(`/item/${product.id}`)}>
             <h1>{product.name} </h1>
-            <button> Ver detalle</button>
-            <ItemCount stock={product.stock} initial={0} />
-        </div>
+            <p>{product.price} $ </p>
+        </div>  
     ) 
 }
