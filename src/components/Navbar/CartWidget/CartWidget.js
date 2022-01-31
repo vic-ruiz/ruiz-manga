@@ -1,11 +1,12 @@
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import './CartWidget.css'
+import {Link} from "react-router-dom"
 
 export const CartWidget = () => {
     return(
-        <a href="default.asp" className='cartWidget'>
+        <Link to="/" className='cartWidget'>
             <ShoppingCartIcon/>
             <p>PlaceHolder</p>
-        </a>
+        </Link>
     )
 }
