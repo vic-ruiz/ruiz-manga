@@ -1,26 +1,14 @@
-import React, {useState} from 'react'
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import "./ItemCounter.css"
 
-export function ItemCount({stock , initial}) {
-
-    const [counter, setCounter] = useState(initial)
-
-    const sumar = () => {
-        if (stock > counter) setCounter(counter + 1)
-    }
-
-    const restar = () => {
-        if (counter > 0) setCounter(counter - 1)
-    }
+export function ItemCount({sumar , restar}) {
 
 
     return (
         <div className="itemCounter" >
-            <h1> {`${counter}`} </h1>
             <ButtonGroup>
                 <Button onClick = {restar}>
                     {" "}
