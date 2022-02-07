@@ -1,12 +1,27 @@
-import React from 'react'
+import React, { useState} from 'react'
 import {ItemCount} from '../ItemCount/ItemCount'
 import "./ItemDetail.css"
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useCart } from '../../context/CartContext'
+
+
 
 export const ItemDetail = ({item}) => {
+    const {cart , addItem, removeItem, isInCart, clearItems} = useCart();
 
     const [counter, setCounter] = useState(0)
+
+    const addItemHandle= () =>{
+        isInCart(item.id) ? console.log("item en carro") : addItem(item, counter)
+    }
+
+    const removeItemHandle= () =>{
+        removeItem(item.id);
+    }
+
+    const clearItemsHandle= () =>{
+        clearItems();
+    }
 
     const sumar = () => {
         if (item.stock > counter) setCounter((prevState)=>prevState + 1)
@@ -25,8 +40,11 @@ export const ItemDetail = ({item}) => {
             <ItemCount restar={restar} sumar={sumar} />
             <p> Total a Pagar : {counter * item.price}</p>
             <Link to='/cart'>
-                <button> Agregar a Carrito de Compra</button>
+                <button onClick={addItemHandle}> Agregar a Carrito de Compra</button>
             </Link>
+            <button onClick= {()=>console.log(cart)} > Mostrar Carrito</button>
+            <button onClick= {removeItemHandle} >Eliminar Item</button>
+            <button onClick= {clearItemsHandle} >Limpiar Carrito</button>
         </div>
     ) 
 }

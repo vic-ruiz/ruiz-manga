@@ -1,16 +1,18 @@
-import React from 'react'
+import React from "react";
 import { ItemCount } from "../ItemCount/ItemCount";
-import "./Item.css"
-import { useNavigate } from "react-router-dom"
+import "./Item.css";
+import { useNavigate } from "react-router-dom";
 
-export const Item = ({product}) => {
+export const Item = ({ product }) => {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
-    
-    return(
-        <div className="productosList" onClick={()=> navigate(`/item/${product.id}`)}>
-            <h1>{product.name} </h1>
-            <p>{product.price} $ </p>
-        </div>  
-    ) 
-}
+  return (
+    <div
+      className="productosList"
+      onClick={() => navigate(`/item/${product.id}`)}
+    >
+      <h1>{product.name} </h1>
+      <p>{product.price} $ </p>
+    </div>
+  );
+};
