@@ -1,5 +1,4 @@
 import React from "react";
-import { ItemCount } from "../ItemCount/ItemCount";
 import "./Item.css";
 import { useNavigate } from "react-router-dom";
 

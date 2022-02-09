@@ -7,20 +7,12 @@ import { useCart } from '../../context/CartContext'
 
 
 export const ItemDetail = ({item}) => {
-    const {cart , addItem, removeItem, isInCart, clearItems} = useCart();
+    const { addItem, isInCart} = useCart();
 
     const [counter, setCounter] = useState(0)
 
     const addItemHandle= () =>{
         isInCart(item.id) ? console.log("item en carro") : addItem(item, counter)
-    }
-
-    const removeItemHandle= () =>{
-        removeItem(item.id);
-    }
-
-    const clearItemsHandle= () =>{
-        clearItems();
     }
 
     const sumar = () => {
@@ -40,11 +32,8 @@ export const ItemDetail = ({item}) => {
             <ItemCount restar={restar} sumar={sumar} />
             <p> Total a Pagar : {counter * item.price}</p>
             <Link to='/cart'>
-                <button onClick={addItemHandle}> Agregar a Carrito de Compra</button>
+                { isInCart(item.id) ? <button>Finalizar Compra </button>:<button onClick={addItemHandle}> Agregar a Carrito de Compra</button>}
             </Link>
-            <button onClick= {()=>console.log(cart)} > Mostrar Carrito</button>
-            <button onClick= {removeItemHandle} >Eliminar Item</button>
-            <button onClick= {clearItemsHandle} >Limpiar Carrito</button>
         </div>
     ) 
 }
