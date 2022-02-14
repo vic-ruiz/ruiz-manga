@@ -1,55 +1,49 @@
-import {useEffect, useState} from "react"
-import {Item} from "../components/Item/Item" 
-import "./ItemListContainer.css"
-import {useParams} from "react-router-dom"
+import { useEffect, useState } from "react";
+import { Item } from "../components/Item/Item";
+import "./ItemListContainer.css";
+import { useParams } from "react-router-dom";
+import { getFirestore } from "../firebase/index";
 
-export const ItemListContainer = () =>{
+export const ItemListContainer = () => {
+  const { categoryId } = useParams();
 
-    const {categoryId}  = useParams();
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(false);
 
-    const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(false)
-
-    useEffect(() => {
-
-        const URL = "http://localhost:3001/productos"
-        setLoading(true)
-        fetch(URL)
-            .then((response)=> response.json())
-            .then((json)=> setProducts(json))
-            .catch((error)=> console.error(error))
-            .finally(()=> setLoading(false))
-    }, []);
-
-    if (categoryId == null){
-        return (
-            <div className= "displayList">
-                {loading? (
-                    <h1 className="cargando"> Cargando... </h1>
-                ) : (
-                    products.map((product)=>(
-                        <Item key={product.id} product={product}/>
-                    ))
-                )}
-                
-            </div>
-            
-        )
+  useEffect(() => {
+    const db = getFirestore();
+    let productsCollection;
+    if (categoryId) {
+      productsCollection = db
+        .collection("productos")
+        .where("category", "==", Number(categoryId));
     } else {
-        return (
-            <div className= "displayList">
-                {loading? (
-                    <h1 className="cargando"> Cargando... </h1>
-                ) : (
-                    products.filter(product => product.category==Number(categoryId)).map((product)=>(
-                        <Item key={product.id} product={product}/>
-                    ))
-                )}
-                
-            </div>
-            
-        )
+      productsCollection = db.collection("productos");
     }
 
-    
-}
+    setLoading(true);
+
+    productsCollection
+      .get()
+      .then((response) => {
+        if (response.empty) {
+          console.log("no hay items");
+        }
+        setProducts(
+          response.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+        );
+      })
+      .catch((error) => console.error(error))
+      .finally(() => setLoading(false));
+  }, [categoryId]);
+
+  return (
+    <div className="displayList">
+      {loading ? (
+        <h1 className="cargando"> Cargando... </h1>
+      ) : (
+        products.map((product) => <Item key={product.id} product={product} />)
+      )}
+    </div>
+  );
+};
