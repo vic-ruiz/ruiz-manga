@@ -4,11 +4,13 @@ import { useCart } from "../../context/CartContext";
 import { getFirestore } from "../../firebase/index";
 import "./Order.css"
 
+
 export const Order = () => {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
+  const { clearItems } = useCart();
 
   const { cart, precioTotal } = useCart();
 
@@ -37,6 +39,7 @@ export const Order = () => {
             navigate(`/thanks/${res.id}`)
         })
         .catch((err)=>console.log("hubo un error", err))
+        .finally(clearItems)
 
   };
 
