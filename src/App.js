@@ -5,6 +5,8 @@ import { CartProvider } from "./context/CartContext";
 import { ItemDetailContainer } from "./ItemDetailContainer/ItemDetailContainer";
 import { ItemListContainer } from "./ItemListContainer/ItemListContainer";
 import Cart from "./components/Cart/Cart";
+import {Order} from "./components/Order/Order"
+import {ThankYou} from "./components/ThankYou/ThankYou"
 
 function App() {
   return (
@@ -21,6 +23,10 @@ function App() {
               <Route path=":productId" element={<ItemDetailContainer />} />
             </Route>
             <Route path="cart" index element={<Cart />}></Route>
+            <Route path="order" index element={<Order />}></Route>
+            <Route path="thanks">
+              <Route path=":orderId" element={<ThankYou />} />
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>

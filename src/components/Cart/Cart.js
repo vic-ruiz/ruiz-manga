@@ -2,6 +2,7 @@ import { useCart } from "../../context/CartContext";
 import "./Cart.css";
 import { useNavigate } from "react-router-dom";
 
+
 const Cart = () => {
   const { cart, removeItem, clearItems, precioTotal, cantidad } = useCart();
   const navigate = useNavigate();
@@ -28,6 +29,8 @@ const Cart = () => {
           <p>{precioTotal} </p>
           <button onClick={clearItems}> Eliminar Todos los Items</button>
         </div>
+
+        <button onClick={() => navigate(`/order`)}> Finalizar Compra</button>
       </div>
     );
   }

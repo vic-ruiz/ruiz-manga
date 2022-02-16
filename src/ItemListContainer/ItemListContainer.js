@@ -4,6 +4,7 @@ import "./ItemListContainer.css";
 import { useParams } from "react-router-dom";
 import { getFirestore } from "../firebase/index";
 
+
 export const ItemListContainer = () => {
   const { categoryId } = useParams();
 
