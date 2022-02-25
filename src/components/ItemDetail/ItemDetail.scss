@@ -1,0 +1,25 @@
+.detailRow{
+    justify-content: center;
+    align-items: center;
+    border: solid black;
+    background-color: black;
+    border-radius: 10px;
+    
+    img{
+        border-radius: 10px;
+        border: white solid;
+        border-radius: 5%;
+        margin: 2%;
+    }
+    .itemDetail{
+        padding: 5px;
+        background-color: black;
+        color: white;
+        justify-content: center;
+        text-align: center;
+
+        button{
+            margin: 2%;
+        }
+    }
+}

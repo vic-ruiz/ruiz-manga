@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App.css";
+import "./App.scss";
 import { Navbar } from "./components/Navbar/Navbar";
 import { CartProvider } from "./context/CartContext";
 import { ItemDetailContainer } from "./ItemDetailContainer/ItemDetailContainer";
@@ -7,6 +7,7 @@ import { ItemListContainer } from "./ItemListContainer/ItemListContainer";
 import Cart from "./components/Cart/Cart";
 import {Order} from "./components/Order/Order"
 import {ThankYou} from "./components/ThankYou/ThankYou"
+import { Footer } from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             </Route>
           </Route>
         </Routes>
+        <Footer />
       </BrowserRouter>
     </CartProvider>
   );

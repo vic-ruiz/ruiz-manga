@@ -1,0 +1,43 @@
+.box {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+  li {
+    float: left;
+    a {
+      display: block;
+
+      color: black;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+    }
+  }
+
+  li a:hover {
+    background-color: rgb(115, 164, 238);
+  }
+}
+
+.containerNav {
+  margin-bottom: 2rem;
+  .rowNav {
+    align-items: center;
+    background-color: rgb(239, 239, 239);
+  }
+}
+
+.brandContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-decoration: none;
+  color: black;
+  align-items: center;
+
+  .brandLogo {
+    max-height: 60px;
+  }
+}
