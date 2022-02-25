@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ItemCount } from "../ItemCount/ItemCount";
 import "./ItemDetail.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 import { Card, Container, ListGroup, Row, Col, Button } from "react-bootstrap";
 
@@ -9,6 +9,8 @@ export const ItemDetail = ({ item }) => {
   const { addItem, isInCart } = useCart();
 
   const [counter, setCounter] = useState(1);
+
+  const navigate = useNavigate();
 
   const addItemHandle = () => {
     addItem(item, counter);
@@ -25,7 +27,7 @@ export const ItemDetail = ({ item }) => {
     <Container>
       <Row className="detailRow">
         <Col xs={10} sm={8} md={6} lg={6}>
-        <Card.Img variant="top" src={item.img} />
+          <Card.Img variant="top" src={item.img} />
         </Col>
         <Col xs={10} sm={8} md={6} lg={6}>
           <Card className="itemDetail">
@@ -53,6 +55,8 @@ export const ItemDetail = ({ item }) => {
                     {" "}
                     Agregar mas unidades
                   </Button>
+
+                  <Button onClick={() => navigate(`/`)}> Seguir Comprando</Button>
                 </div>
               ) : (
                 <Button variant="primary" onClick={addItemHandle}>
