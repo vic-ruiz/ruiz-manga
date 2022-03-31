@@ -24,7 +24,7 @@ export const Footer = () => {
           <h4>Contact</h4>
           <ul>
             <li>name@example.com</li>
-            <li>Direccion 123</li>
+            <li>Direccion 456</li>
             <li>+54123456789</li>
           </ul>
         </Col>
