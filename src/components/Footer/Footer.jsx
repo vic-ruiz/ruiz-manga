@@ -25,7 +25,7 @@ export const Footer = () => {
           <ul>
             <li>name@example.com</li>
             <li>Direccion 456</li>
-            <li>+54123456789</li>
+            <li>+5412345678</li>
           </ul>
         </Col>
       </Row>
